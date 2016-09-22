@@ -14,6 +14,8 @@ public enum SubmarinoDirecao {
 
 	private Integer codigo;
 
+	private static final List<SubmarinoDirecao> DIRECOES = Arrays.asList(SubmarinoDirecao.values());
+
 	private SubmarinoDirecao(Integer codigo) {
 		this.codigo = codigo;
 	}
@@ -22,9 +24,30 @@ public enum SubmarinoDirecao {
 		return codigo;
 	}
 
-	public static SubmarinoDirecao getByCodigo(int codigo) {
-		List<SubmarinoDirecao> direcoes = Arrays.asList(SubmarinoDirecao.values());
-		return direcoes.stream().filter(direcao -> direcao.codigo == codigo).findFirst().get();
+	private  SubmarinoDirecao getByCodigo(int codigo) {
+		return DIRECOES.stream().filter(direcao -> direcao.codigo == codigo).findFirst().get();
+	}
+
+	/**
+	 * @return direcao esquerda da atual
+	 */
+	public SubmarinoDirecao getEsquerda() {
+		SubmarinoDirecao esquerda = NORTE;
+		if (codigo < 3) {
+			esquerda = getByCodigo(codigo + 1);
+		}
+		return esquerda;
+	}
+
+	/**
+	 * @return direcao direita da atual
+	 */
+	public SubmarinoDirecao getDireita() {
+		SubmarinoDirecao direita = LESTE;
+		if (codigo > 0) {
+			direita = getByCodigo(codigo - 1);
+		}
+		return direita;
 	}
 
 }

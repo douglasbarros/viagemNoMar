@@ -18,7 +18,7 @@ public class Submarino {
 		this.y = 0;
 		this.z = 0;
 
-		this.direcao = SubmarinoDirecao.NORTE;
+		setDirecao(SubmarinoDirecao.NORTE);
 	}
 
 	/**
@@ -42,10 +42,10 @@ public class Submarino {
 	private void mover(String comando) {
 		switch (comando) {
 		case "L":
-			girarEsquerda();
+			setDirecao(direcao.getEsquerda());
 			break;
 		case "R":
-			girarDireita();
+			setDirecao(direcao.getDireita());
 			break;
 		case "M":
 			andar();
@@ -85,22 +85,6 @@ public class Submarino {
 		}
 	}
 
-	public void girarEsquerda() {
-		if (direcao.getCodigo() < 3) {
-			direcao = SubmarinoDirecao.getByCodigo(direcao.getCodigo() + 1);
-		} else {
-			direcao = SubmarinoDirecao.getByCodigo(0);
-		}
-	}
-
-	public void girarDireita() {
-		if (direcao.getCodigo() > 0) {
-			direcao = SubmarinoDirecao.getByCodigo(direcao.getCodigo() - 1);
-		} else {
-			direcao = SubmarinoDirecao.getByCodigo(3);
-		}
-	}
-
 	public Integer getX() {
 		return x;
 	}
@@ -115,6 +99,10 @@ public class Submarino {
 
 	public SubmarinoDirecao getDirecao() {
 		return direcao;
+	}
+
+	public void setDirecao(SubmarinoDirecao direcao) {
+		this.direcao = direcao;
 	}
 
 	@Override
