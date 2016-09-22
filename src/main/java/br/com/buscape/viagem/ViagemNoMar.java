@@ -12,8 +12,6 @@ import java.io.InputStreamReader;
  */
 public class ViagemNoMar {
 
-	private static Submarino submarino;
-
 	public static void main(String[] args) throws IOException {
 		System.out.println("Ola cientista! Digite as suas coordenadas:");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -24,7 +22,7 @@ public class ViagemNoMar {
 			comandos = reader.readLine();
 		}
 
-		submarino = new Submarino();
+		Submarino submarino = new Submarino();
 		submarino.navegar(comandos);
 	}
 

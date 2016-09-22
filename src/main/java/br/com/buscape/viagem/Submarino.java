@@ -1,5 +1,7 @@
 package br.com.buscape.viagem;
 
+import java.util.Arrays;
+
 /**
  * Representa o Submarino e suas funcoes
  * 
@@ -7,9 +9,7 @@ package br.com.buscape.viagem;
  */
 public class Submarino {
 
-	private Integer x;
-	private Integer y;
-	private Integer z;
+	private Integer x, y, z;
 
 	private SubmarinoDirecao direcao;
 
@@ -30,10 +30,7 @@ public class Submarino {
 	 * @param comandos - Lista de comandos para o Submarino
 	 */
 	public void navegar(String comandos) {
-		for (int i = 0; i < comandos.length(); i++) {
-			char comando = comandos.charAt(i);
-			mover(comando);
-		}
+		Arrays.asList(comandos.split("")).forEach(comando -> mover(comando));
 		System.out.println(this);
 	}
 
@@ -42,21 +39,21 @@ public class Submarino {
 	 * 
 	 * @param comando
 	 */
-	private void mover(char comando) {
+	private void mover(String comando) {
 		switch (comando) {
-		case 'L':
+		case "L":
 			girarEsquerda();
 			break;
-		case 'R':
+		case "R":
 			girarDireita();
 			break;
-		case 'M':
+		case "M":
 			andar();
 			break;
-		case 'U':
+		case "U":
 			z++;
 			break;
-		case 'D':
+		case "D":
 			z--;
 			break;
 
@@ -108,32 +105,16 @@ public class Submarino {
 		return x;
 	}
 
-	public void setX(Integer x) {
-		this.x = x;
-	}
-
 	public Integer getY() {
 		return y;
-	}
-
-	public void setY(Integer y) {
-		this.y = y;
 	}
 
 	public Integer getZ() {
 		return z;
 	}
 
-	public void setZ(Integer z) {
-		this.z = z;
-	}
-
 	public SubmarinoDirecao getDirecao() {
 		return direcao;
-	}
-
-	public void setDirecao(SubmarinoDirecao direcao) {
-		this.direcao = direcao;
 	}
 
 	@Override

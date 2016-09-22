@@ -1,5 +1,8 @@
 package br.com.buscape.viagem;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Direcoes possiveis para o Submarino
  * 
@@ -20,12 +23,8 @@ public enum SubmarinoDirecao {
 	}
 
 	public static SubmarinoDirecao getByCodigo(int codigo) {
-		for (SubmarinoDirecao submarinoDirecao : SubmarinoDirecao.values()) {
-			if (submarinoDirecao.codigo == codigo) {
-				return submarinoDirecao;
-			}
-		}
-		return null;
+		List<SubmarinoDirecao> direcoes = Arrays.asList(SubmarinoDirecao.values());
+		return direcoes.stream().filter(direcao -> direcao.codigo == codigo).findFirst().get();
 	}
 
 }
