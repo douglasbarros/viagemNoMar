@@ -28,9 +28,9 @@ public class TesteViagem {
 	public void testPosicaoInicial() {
 		Submarino submarino = new Submarino();
 
-		assertEquals(0, submarino.getX().intValue());
-		assertEquals(0, submarino.getY().intValue());
-		assertEquals(0, submarino.getZ().intValue());
+		assertEquals(Integer.valueOf(0), submarino.getX());
+		assertEquals(Integer.valueOf(0), submarino.getY());
+		assertEquals(Integer.valueOf(0), submarino.getZ());
 		assertEquals(SubmarinoDirecao.NORTE, submarino.getDirecao());
 	}
 
@@ -39,9 +39,9 @@ public class TesteViagem {
 		Submarino submarino = new Submarino();
 		submarino.navegar("");
 
-		assertEquals(0, submarino.getX().intValue());
-		assertEquals(0, submarino.getY().intValue());
-		assertEquals(0, submarino.getZ().intValue());
+		assertEquals(Integer.valueOf(0), submarino.getX());
+		assertEquals(Integer.valueOf(0), submarino.getY());
+		assertEquals(Integer.valueOf(0), submarino.getZ());
 		assertEquals(SubmarinoDirecao.NORTE, submarino.getDirecao());
 	}
 
@@ -50,10 +50,34 @@ public class TesteViagem {
 		Submarino submarino = new Submarino();
 		submarino.navegar("ABC");
 
-		assertEquals(0, submarino.getX().intValue());
-		assertEquals(0, submarino.getY().intValue());
-		assertEquals(0, submarino.getZ().intValue());
+		assertEquals(Integer.valueOf(0), submarino.getX());
+		assertEquals(Integer.valueOf(0), submarino.getY());
+		assertEquals(Integer.valueOf(0), submarino.getZ());
 		assertEquals(SubmarinoDirecao.NORTE, submarino.getDirecao());
+	}
+
+	@Test
+	public void testAlteraDirecoes() {
+		Submarino submarino = new Submarino();
+		
+		submarino.navegar("R");
+		assertEquals(SubmarinoDirecao.LESTE, submarino.getDirecao());
+		
+		submarino.navegar("R");
+		assertEquals(SubmarinoDirecao.SUL, submarino.getDirecao());
+		
+		submarino.navegar("R");
+		assertEquals(SubmarinoDirecao.OESTE, submarino.getDirecao());
+		
+		submarino.navegar("R");
+		assertEquals(SubmarinoDirecao.NORTE, submarino.getDirecao());
+		
+		submarino.navegar("L");
+		assertEquals(SubmarinoDirecao.OESTE, submarino.getDirecao());
+
+		assertEquals(Integer.valueOf(0), submarino.getX());
+		assertEquals(Integer.valueOf(0), submarino.getY());
+		assertEquals(Integer.valueOf(0), submarino.getZ());
 	}
 
 	@Test
@@ -61,9 +85,9 @@ public class TesteViagem {
 		Submarino submarino = new Submarino();
 		submarino.navegar("RMMLMMMDDLL");
 
-		assertEquals(2, submarino.getX().intValue());
-		assertEquals(3, submarino.getY().intValue());
-		assertEquals(-2, submarino.getZ().intValue());
+		assertEquals(Integer.valueOf(2), submarino.getX());
+		assertEquals(Integer.valueOf(3), submarino.getY());
+		assertEquals(Integer.valueOf(-2), submarino.getZ());
 		assertEquals(SubmarinoDirecao.SUL, submarino.getDirecao());
 	}
 
